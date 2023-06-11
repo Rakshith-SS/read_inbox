@@ -1,0 +1,15 @@
+# virtual environments
+env
+venv
+
+# secret files
+.env
+
+# Oauth Credentials
+credentials.json
+
+# pycache 
+**/__pycache__/**
+
+# token.pickle contains credentials
+token.pickle

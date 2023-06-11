@@ -1,0 +1,21 @@
+{
+    "all": [
+        {
+            "From": {
+                "value": "Rakshith S S",
+                "predicate": "contains"
+            },
+            "Subject":{
+                "value": "second",
+                "predicate": "contains"
+            },
+            "Date":{
+                "value": 2,
+                "predicate": "less than"
+            }
+        }
+    ],
+    "any": [
+        {}
+    ]
+}
