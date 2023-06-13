@@ -17,9 +17,9 @@ A python script that parse your gmail inbox and marks them read, and adds a labe
     python -m pip install -r requirements.txt
     ```
 + Add Environment Variables 
-    + [ ] Create a database using postgres
-    + [ ] Create a new file named .env
-    + [ ] Add the following values to the .env file.
+    + Create a database using postgres
+    + Create a new file named .env
+    + Add the following values to the .env file.
     ```
     DB_USER = '<DATABASE_USER_NAME>'
     DB_PASSWORD = '<DATABASE_PASSWORD>'
@@ -29,7 +29,7 @@ A python script that parse your gmail inbox and marks them read, and adds a labe
 
 ## Running the script
 
-+ [ ] To run the script simply run 
++ To run the script simply run 
     ```
         python main.py
     ```
@@ -38,7 +38,7 @@ A python script that parse your gmail inbox and marks them read, and adds a labe
 
     ![allow permission](assets/authenticate.png) 
 
-+ [ ] Editing the rules
++  Editing the rules
     You can edit the rules of the app, by editing rules.json, you can add as many rules to all and any list objects.
 
     Sample file
