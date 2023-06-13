@@ -99,7 +99,7 @@ class MailInbox():
             rules = json.load(file)
         return rules
 
-    def process_emails(self) -> None:
+    def process_emails(self) -> list[str]:
         """
             read emails from the database, process
             them based on a set of rules.
@@ -110,6 +110,7 @@ class MailInbox():
         all_conditon = rules["all"]
         any_condition = rules["any"]
 
+        processed_emails = []
         for data in all_conditon:
             mails = filter_condition(rule='all', **data)
             for mail in mails:
@@ -127,6 +128,9 @@ class MailInbox():
                     }
                 ).execute()
 
+                if msg_id not in processed_emails:
+                    processed_emails.append(msg_id)
+
         for data in any_condition:
             mails = filter_condition(**data)
             for mail in mails:
@@ -143,3 +147,6 @@ class MailInbox():
                         ]
                     }
                 ).execute()
+                if msg_id not in processed_emails:
+                    processed_emails.append(msg_id)
+        return processed_emails

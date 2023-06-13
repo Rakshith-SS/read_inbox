@@ -87,3 +87,10 @@ def filter_predicates(predicate: str, field: str, value: str) -> MailInbox:
         query_string = MailInbox.date_received > days_ago
 
     return query_string
+
+
+def get_all_msg_ids() -> list:
+    db = SessionLocal()
+    mails = db.query(MailInbox).all()
+    msg_ids = [mail.msg_id for mail in mails]
+    return msg_ids
