@@ -84,3 +84,11 @@ A python script that parse your gmail inbox and marks them read, and adds a labe
         ]
     }
     ```
+
+## Running Tests
+
++ To run tests 
+    ```
+    python -m unittest -v tests.TestMailInbo
+    ```
+    ![running test](assets/running_test.png) 
