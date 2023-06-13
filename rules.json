@@ -21,7 +21,7 @@
     "any": [
         {
             "From": {
-                "value": "Google",
+                "value": "Arch",
                 "predicate": "contains",
                 "field": "sender"
             },
@@ -31,7 +31,7 @@
                 "field": "subject"
             },
             "Date":{
-                "value": 3,
+                "value": 1,
                 "predicate": "less than",
                 "field": "date_received"
             }
