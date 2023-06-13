@@ -3,14 +3,19 @@ from google_auth_oauthlib.flow import InstalledAppFlow
 from google.auth.transport.requests import Request
 import pickle
 import os.path
+import json
 
 from helpers import convert_datetime
-from crud import save_to_inbox
+from crud import save_to_inbox, filter_condition
+from typing import Dict
 
 
 class MailInbox():
     def __init__(self):
-        self.SCOPES = ['https://www.googleapis.com/auth/gmail.readonly']
+        self.SCOPES = [
+            'https://www.googleapis.com/auth/gmail.readonly',
+            'https://www.googleapis.com/auth/gmail.modify'
+        ]
 
     def authorize(self) -> str:
         """
@@ -44,7 +49,7 @@ class MailInbox():
 
         return creds
 
-    def read_inbox(self):
+    def read_inbox(self) -> None:
         """
             Read the inbox of the authenticated user and
             save to the database
@@ -85,9 +90,56 @@ class MailInbox():
             except KeyError:
                 pass
 
-    def process_emails(self):
+    def load_rules(self) -> Dict:
+        """
+            Load all the rules from
+            rules.json file
+        """
+        with open('rules.json', 'r') as file:
+            rules = json.load(file)
+        return rules
+
+    def process_emails(self) -> None:
         """
             read emails from the database, process
             them based on a set of rules.
         """
-        pass
+        rules = self.load_rules()
+        creds = self.authorize()
+        service = build('gmail', 'v1', credentials=creds)
+        all_conditon = rules["all"]
+        any_condition = rules["any"]
+
+        for data in all_conditon:
+            mails = filter_condition(rule='all', **data)
+            for mail in mails:
+                msg_id = mail.msg_id
+                service.users().messages().modify(
+                    userId='me',
+                    id=msg_id,
+                    body={
+                        "addLabelIds": [
+                            "Label_8011922581381469318"
+                        ],
+                        "removeLabelIds": [
+                            "UNREAD"
+                        ]
+                    }
+                ).execute()
+
+        for data in any_condition:
+            mails = filter_condition(**data)
+            for mail in mails:
+                msg_id = mail.msg_id
+                service.users().messages().modify(
+                    userId='me',
+                    id=msg_id,
+                    body={
+                        "addLabelIds": [
+                            "Label_8011922581381469318"
+                        ],
+                        "removeLabelIds": [
+                            "UNREAD"
+                        ]
+                    }
+                ).execute()

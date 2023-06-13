@@ -14,6 +14,8 @@ def convert_datetime(datetime_string: str) -> datetime:
             Output - 2023-06-10 22:16:03+05:30
     """
     date_format = "%a, %d %b %Y %H:%M:%S %z"
+    if datetime_string.split()[-1] == 'GMT':
+        date_format = "%a, %d %b %Y %H:%M:%S %Z"
 
     datetime_obj = datetime.strptime(datetime_string, date_format)
     return datetime_obj

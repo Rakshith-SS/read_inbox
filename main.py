@@ -6,6 +6,7 @@ def main():
     Base.metadata.create_all(engine)
     mail = MailInbox()
     mail.read_inbox()
+    mail.process_emails()
 
 
 if __name__ == "__main__":

@@ -3,19 +3,38 @@
         {
             "From": {
                 "value": "Rakshith S S",
-                "predicate": "contains"
+                "predicate": "contains",
+                "field": "sender"
             },
             "Subject":{
-                "value": "second",
-                "predicate": "contains"
+                "value": "New",
+                "predicate": "contains",
+                "field": "subject"
             },
             "Date":{
-                "value": 2,
-                "predicate": "less than"
+                "value": 3,
+                "predicate": "less than",
+                "field": "date_received"
             }
         }
     ],
     "any": [
-        {}
+        {
+            "From": {
+                "value": "Google",
+                "predicate": "contains",
+                "field": "sender"
+            },
+            "Subject":{
+                "value": "New",
+                "predicate": "contains",
+                "field": "subject"
+            },
+            "Date":{
+                "value": 3,
+                "predicate": "less than",
+                "field": "date_received"
+            }
+        }
     ]
 }
