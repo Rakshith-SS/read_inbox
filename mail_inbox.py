@@ -119,7 +119,7 @@ class MailInbox():
                     id=msg_id,
                     body={
                         "addLabelIds": [
-                            "Label_8011922581381469318"
+                            "INBOX"
                         ],
                         "removeLabelIds": [
                             "UNREAD"
@@ -136,7 +136,7 @@ class MailInbox():
                     id=msg_id,
                     body={
                         "addLabelIds": [
-                            "Label_8011922581381469318"
+                            "INBOX"
                         ],
                         "removeLabelIds": [
                             "UNREAD"
