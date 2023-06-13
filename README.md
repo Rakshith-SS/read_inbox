@@ -4,29 +4,32 @@
 
 A python script that parse your gmail inbox and marks them read, and adds a label based on a set of rules.
 
-## Installation
+## Installation and Setup
 
-Install the necessary packages.
-```
-python -m pip install -r requirements.txt
-```
++ Generate credentials for an oauth desktop application and save credentials to credentials.json [docs](https://developers.google.com/gmail/api/quickstart/python#authorize_credentials_for_a_desktop_application) 
 
-## Environment Variables 
-
-+ [ ] Create a database using postgres
-+ [ ] Create a new file named .env
-+ [ ] Add the following values to the .env file.
-```
-DB_USER = '<DATABASE_USER_NAME>'
-DB_PASSWORD = '<DATABASE_PASSWORD>'
-DB_HOST = '<DATABASE_HOST>'
-DB_NAME = '<DATABASE_NAME>'
-```
++ Clone the repository
+    ```
+    git clone https://github.com/Rakshith-SS/read_inbox.git
+    ```
++ Install the necessary packages.
+    ```
+    python -m pip install -r requirements.txt
+    ```
++ Add Environment Variables 
+    + [ ] Create a database using postgres
+    + [ ] Create a new file named .env
+    + [ ] Add the following values to the .env file.
+    ```
+    DB_USER = '<DATABASE_USER_NAME>'
+    DB_PASSWORD = '<DATABASE_PASSWORD>'
+    DB_HOST = '<DATABASE_HOST>'
+    DB_NAME = '<DATABASE_NAME>'
+    ```
 
 ## Running the script
 
 + [ ] To run the script simply run 
-    
     ```
         python main.py
     ```
